@@ -6,9 +6,9 @@ __version__ = "0.1.0"
 
 BASE_DIR = Path(__file__).resolve(strict=True).parent
 
+# Load the pre-trained model
 with open(f"{BASE_DIR}/model-{__version__}.pkl", "rb") as f:
     model = pickle.load(f)
-
 
 classes = [
     "Arabic",
@@ -22,17 +22,19 @@ classes = [
     "Italian",
     "Kannada",
     "Malayalam",
-    "Portugeese",
+    "Portuguese",
     "Russian",
     "Spanish",
-    "Sweedish",
+    "Swedish",
     "Tamil",
     "Turkish",
 ]
 
 
-# Define predicttion pipeline function
 def predict_pipeline(text):
+    """
+    Preprocess the input text and predict the language.
+    """
     text = re.sub(r'[!@#$(),\n"%^*?\:;~`0-9]', " ", text)
     text = re.sub(r"[[]]", " ", text)
     text = text.lower()

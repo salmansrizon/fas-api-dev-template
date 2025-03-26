@@ -1,0 +1,11 @@
+services:
+  fastapi-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: fastapi-container
+    ports:
+      - "80:80"  # Map host port 80 to container port 80
+    volumes:
+      - ./app:/app/app  # Mount the local app directory to the container's app directory for live updates
+    restart: always
